@@ -1,7 +1,9 @@
 import express from "express"
 import { Request, Response } from "express"
 import compression from "compression"
+
 import { router } from "./routes"
+import { moduleRouter } from "./routes/module/moduleRoutes"
 
 
 const app = express()
@@ -17,7 +19,8 @@ app.use(compression({
 }))
 
 
-app.use(router)
+app.use("/", router)
+app.use("/module", moduleRouter)
 
 
 export { app }
