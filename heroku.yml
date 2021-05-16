@@ -2,3 +2,6 @@ build:
   docker:
 #    api: src/backend/Dockerfile
     frontend: src/frontend/Dockerfile
+
+run:
+  frontend: /bin/bash -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf > /etc/nginx/conf.d/default.conf" && nginx -g 'daemon off;'
