@@ -21,7 +21,7 @@ app.use(compression_1.default({
     }
 }));
 app.use((request, response, next) => {
-    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Origin", `${process.env.HOST}`);
     response.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
 });
