@@ -13,13 +13,16 @@ exports.typeormConnection = {
         const connection = ormconfig_1.default.find(connection => connection.name === connectionName);
         if (connection !== undefined) {
             typeorm_1.createConnection(connection).then(() => {
-                console.log(`Postgres connection: (${connectionName}) is connected`);
+                console.log(`Connection: (${connectionName}) is connected`);
             });
+        }
+        else {
+            throw new Error(`Connection: (${connectionName}) does not exists`);
         }
     },
     async close(connectionName) {
         typeorm_1.getConnection(connectionName).close().then(() => {
-            console.log(`Postgres connection: (${connectionName}) is disconnected`);
+            console.log(`Connection: (${connectionName}) is disconnected`);
         });
     },
     async clear(connectionName) {
