@@ -7,4 +7,6 @@ COPY dist ./dist
 
 RUN yarn install --frozen-lockfile
 
-CMD node dist/server.js --bind 0.0.0.0:$PORT
+EXPOSE 3333
+
+CMD node dist/server.js

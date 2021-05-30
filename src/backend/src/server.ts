@@ -12,9 +12,5 @@ dotenv.config()
 typeormConnection.create(process.env.NODE_ENV || "default")
 
 
-app.use(cors({
-	origin: [
-		`${process.env.HOST}`,
-	]
-}))
+app.use(cors())
 app.listen(3333)
