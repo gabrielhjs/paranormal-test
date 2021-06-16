@@ -1,21 +1,25 @@
 import React from "react"
+import { Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import { CardStyled } from "./styles"
 
 
 interface Props {
-	number: number
+  number: number
 }
 
 
 export const Module = (props: Props) => {
 
-	return (
-		<li>
-			<Link to={{
-				pathname: `/${props.number}`,
-			}}>
-				Modulo ({props.number})
-				</Link>
-		</li>
-	)
+  return (
+    <Link to={{
+      pathname: `/${props.number}`,
+    }} className="w-75 my-2">
+      <Card className="w-100">
+        <CardStyled>
+          <Card.Title className="my-4"><h5>Modulo ({props.number})</h5></Card.Title>
+        </CardStyled>
+      </Card>
+    </Link>
+  )
 }

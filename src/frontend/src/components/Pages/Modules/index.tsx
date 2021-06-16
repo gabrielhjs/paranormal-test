@@ -1,18 +1,17 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Container, Row } from "react-bootstrap"
 import { Module } from "../../Module"
 
 
 export const PageModules = () => {
-	return (
-		<>
-			<ul>
-				<Module number={1} />
-				<Module number={2} />
-				<Module number={3} />
-				<Module number={4} />
-			</ul>
-			<Link to="/">Home</Link>
-		</>
-	)
+  return (
+    <Container className="fluid mx-auto">
+      <Row className="justify-content-center">
+        <Module number={1} />
+        <Module number={2} />
+        <Module number={3} />
+        <Module number={4} />
+      </Row>
+    </Container>
+  )
 }

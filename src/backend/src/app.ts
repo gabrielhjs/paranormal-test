@@ -4,6 +4,7 @@ import compression from "compression"
 
 import { router } from "./routes"
 import { moduleRouter } from "./routes/module/moduleRoutes"
+import cors from "cors"
 
 
 const app = express()
@@ -17,12 +18,11 @@ app.use(compression({
     return compression.filter(request, response)
   }
 }))
-app.use((_, response, next) => {
-  response.header("Access-Control-Allow-Origin", "*")
-  response.header("Access-Control-Allow-Headers", "X-Requested-With")
-  next();
-});
 
+app.use(cors({
+  origin: "http://localhost:3000",
+  methods: ["GET", "POST"]
+}))
 
 app.use("/", router)
 app.use("/module", moduleRouter)

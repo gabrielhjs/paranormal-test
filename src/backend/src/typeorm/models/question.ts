@@ -10,20 +10,20 @@ import { OrmOption } from "./option"
 
 @Entity("questions")
 export class OrmQuestion extends BaseModel implements Question {
-	@Column()
-	number!: number
+  @Column()
+  number!: number
 
-	@Column()
-	name!: string
+  @Column()
+  name!: string
 
-	@OneToMany(() => OrmOption, product => product.question, {
-		onDelete: "CASCADE",
-		onUpdate: "CASCADE",
-		cascade: true
-	})
-	options?: Option[]
+  @OneToMany(() => OrmOption, product => product.question, {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+    cascade: true
+  })
+  options?: Option[]
 
-	@ManyToOne(() => OrmModule, module => module.questions)
-	@JoinColumn()
-	module!: Module
+  @ManyToOne(() => OrmModule, module => module.questions)
+  @JoinColumn()
+  module!: Module
 }

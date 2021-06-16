@@ -12,20 +12,18 @@ import { PageModules } from "./components/Pages/Modules"
 export const App = () => {
   return (
     <Router>
-      <>
-        <Header />
-        <Body>
-          <Switch>
-            <Route path="/:id">
-              <PageQuestions />
-            </Route>
-            <Route path="/">
-              <PageModules />
-            </Route>
-          </Switch>
-        </Body>
-        < GlobalStyles />
-      </>
+      <Header />
+      <Body>
+        <Switch>
+          <Route path="/:id">
+            <PageQuestions />
+          </Route>
+          <Route path="/">
+            <PageModules />
+          </Route>
+        </Switch>
+      </Body>
+      < GlobalStyles />
     </Router>
   )
 }

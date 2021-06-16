@@ -1,18 +1,18 @@
 import { Request, Response } from "express"
-import { Question } from "../../../entities/question"
 
 import { IController } from "../../interfaces/IController"
 import { IUseCase } from "../../interfaces/IUseCase"
-import { GetModuleDto } from "./getModulesDto"
+import { PostModuleAnswersDto } from "./postModuleAnswersDto"
 
 
-export class GetModulesController implements IController {
+export class PostModuleAnswersController implements IController {
   constructor(
-    private getModulesUseCase: IUseCase<GetModuleDto, Question[]>
+    private postModuleAnswersUseCase: IUseCase<PostModuleAnswersDto, String>
   ) { }
-  async handle(_: Request, response: Response): Promise<Response> {
+  async handle(request: Request, response: Response): Promise<Response> {
     try {
-      const data = await this.getModulesUseCase.execute({})
+      const { answers } = request.body
+      const data = await this.postModuleAnswersUseCase.execute({ answers })
 
       if (data.error) {
         return response.status(400).send({ error: data.error })
@@ -22,7 +22,7 @@ export class GetModulesController implements IController {
     }
     catch (error) {
       console.log(error.message)
-      return response.status(400).send(
+      return response.status(500).send(
         { error: "Unexpected error." }
       )
     }
